@@ -8,7 +8,7 @@ The project requires **Python 3** and a running instance of **Docker**.
 The `init.sh` script is provided in order to run the first setup of the environment. This script:
 - Creates a virtual environment and installs required Python packages there, 
 - Creates a Docker container with an empty local PostgreSQL database, 
-- Creates a volume in the stame container and puts the raw data there to mimic an external stage to load the data from,
+- Creates a volume in the same container and puts the raw data there to mimic an external stage to load the data from,
 - Creates schemas and raw tables and loads the data in those,
 - Compiles, runs and tests the dbt project.
 
