@@ -1,0 +1,32 @@
+version: 2
+
+models:
+
+  - name: fct_payment__transactions
+    description: Granular transaction facts table
+    columns:
+      - name: transaction_id
+      - name: transaction_key
+      - name: device_key
+      - name: product_sku
+      - name: product_name
+      - name: category_name
+      - name: card_key
+      - name: cvv_key
+      - name: transaction_status
+      - name: transaction_amount
+      - name: created_at
+      - name: happened_at
+
+  - name: fct_payment__transactions_daily
+    description: Daily aggregated transaction facts table
+    columns:
+      - name: device_key
+      - name: store_key
+      - name: product_sku
+      - name: category_name
+      - name: transaction_status
+      - name: created_date
+      - name: happened_date
+      - name: total_transaction_count
+      - name: total_transaction_amount

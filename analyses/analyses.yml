@@ -1,0 +1,18 @@
+version: 2
+
+analyses:
+
+  - name: analysis_top_stores
+    description: Returns top 10 stores per transacted amount. By assumption, only accepted transactions (`transaction.status = 'accepted'`) are included to calculate total transaction amount of each store.
+   
+  - name: analysis_top_products
+    description: Returns top 10 products sold. By assumption, only accepted transactions (`transaction.status = 'accepted'`) are included to calculate total transaction amount of each sold product.
+
+  - name: analysis_store_typology_facts
+    description: Returns average transacted amount per store typology and country. By assumption, stores with no transansaction records are not included in the calculation. Also, all transactions (i.e. independent from `transaction.status`) are included to calculate the results.
+
+  - name: analysis_device_distributions
+    description: Returns percentage of transactions per device type. By assumption, all transactions (i.e. independent from `transaction.status`) are included to calculate the results. The percentages are count-based.
+
+  - name: analysis_time_till_first_transactions
+    description: Returns average time for a store to perform its 5 first transactions. `store.created_at` is assumed to be the store's onboarding date, while `transaction.happened_at` is assumed as the transaction date. Stores with no transactions or with less than 5 transactions are not included in the calculations. Note that, with these assumptions and possibly due to this being a fake data, the results do not make much sense, as in most cases the transactions appear before the store onboarding date. 

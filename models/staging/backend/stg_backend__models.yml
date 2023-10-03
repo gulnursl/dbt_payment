@@ -1,0 +1,111 @@
+version: 2
+
+models:
+
+  - name: stg_backend__stores
+    description: Staging view for `backend.store` table
+    columns:
+      - name: store_key
+        tests:
+          - not_null
+          - unique
+      - name: customer_key
+        tests:
+          - not_null
+      - name: store_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+      - name: typology
+        tests:
+          - not_null
+          - accepted_values:
+              values: [Beauty, Florist, FoodTruck, Hotel, Other, Press, Restaurant, Service]
+      - name: name
+      - name: country
+        tests:
+          - not_null
+      - name: city
+        tests:
+          - not_null
+      - name: address
+      - name: created_at
+
+
+  - name: stg_backend__devices
+    description: Staging view for `backend.device` table
+    columns:
+      - name: device_key
+        tests:
+          - not_null
+          - unique
+      - name: store_key
+        tests:
+          - not_null
+          - dbt_utils.relationships_where:
+              to: ref('stg_backend__stores')
+              field: store_key
+      - name: device_id
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        tests:
+          - not_null
+          - dbt_utils.relationships_where:
+              to: ref('stg_backend__stores')
+              field: store_id
+      - name: device_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+
+
+  - name: stg_backend__transactions
+    description: Staging view for `backend.transaction` table
+    columns:
+      - name: transaction_key
+        tests:
+          - not_null
+          - unique
+      - name: device_key
+        tests:
+          - not_null
+          - dbt_utils.relationships_where:
+              to: ref('stg_backend__devices')
+              field: device_key
+      - name: transaction_id
+        tests:
+          - not_null
+          - unique
+      - name: device_id
+        tests:
+          - not_null
+          - dbt_utils.relationships_where:
+              to: ref('stg_backend__devices')
+              field: device_id
+      - name: product_sku
+        tests:
+          - not_null
+      - name: product_name
+      - name: category_name
+      - name: transaction_amount
+        tests:
+          - not_null
+      - name: transaction_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: [cancelled, refused, accepted]
+      - name: card_key
+        tests:
+          - not_null
+      - name: cvv_key
+        tests:
+          - not_null
+      - name: created_at
+      - name: happened_at

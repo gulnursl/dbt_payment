@@ -1,0 +1,44 @@
+version: 2
+
+models:
+
+  - name: dim_customer__devices
+    description: Dimension table for devices in each store
+    columns:
+      - name: device_id
+        tests:
+          - not_null
+      - name: device_key
+        tests:
+          - not_null
+          - unique
+      - name: store_key
+        tests:
+          - not_null
+          - dbt_utils.relationships_where:
+              to: ref('dim_customer__stores')
+              field: store_key
+      - name: device_type
+
+
+  - name: dim_customer__stores
+    description: Dimension table for customers' stores
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+      - name: store_key
+        tests:
+          - not_null
+          - unique
+      - name: customer_key
+        tests:
+          - not_null
+      - name: typology
+        tests:
+          - not_null
+      - name: name
+      - name: country
+      - name: city
+      - name: address
+      - name: created_at

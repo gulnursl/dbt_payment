@@ -1,0 +1,32 @@
+version: 2
+
+models:
+
+  - name: int_payment__txn_aggr_excl_current_date
+    description: Incremental model of daily aggregated transaction facts table excluding the current date, as the aggregations are prone to changes still in the current date. `transaction.created_at` is assumed to be the timestamp when the transaction was recorded in the database, hence was used to catch updates.
+    columns:
+      - name: device_key
+      - name: store_key
+      - name: product_sku
+      - name: category_name
+      - name: transaction_status
+      - name: created_date
+      - name: happened_date
+      - name: total_transaction_count
+      - name: total_transaction_amount
+      - name: _report_date
+        description: Dummy column to track the latest data imported to the table through the incremental model
+
+
+  - name: int_payment__txn_aggr_current_date
+    description: Aggregated transaction facts table of the current date. `transaction.created_at` is assumed to be the timestamp when the transaction was recorded in the database, hence was used to catch updates.
+    columns:
+      - name: device_key
+      - name: store_key
+      - name: product_sku
+      - name: category_name
+      - name: transaction_status
+      - name: created_date
+      - name: happened_date
+      - name: total_transaction_count
+      - name: total_transaction_amount

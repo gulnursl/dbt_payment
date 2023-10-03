@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+
+  - name: backend
+    description: Stores the raw data that was extracted from the Backend DB.
+    tables:
+      - name: device
+        description: List of devices as well as device to store relationship.
+      - name: store
+        description: List of stores and details, as well as store to customer relationship.
+      - name: transaction
+        description: Transaction details
