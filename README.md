@@ -21,12 +21,12 @@ This project's structure follows the [best practices](https://docs.getdbt.com/gu
 - **`marts`**: Where modular pieces are brought together into a wide, rich vision of the entities. Grouped in subfolders of business entities. Models are named as `mrt_business_entity__model_name`. Outputs are stored in `mrt` schema.
 
 ## Where to find documentation?
-The project documentation can be accessed [here](link). If it is not accessible for any reason, after running the `init.sh` script and while the container is still running, running `dbt docs generate` and `dbt docs serve` commands consecutively would also create a local instance of the documentation.
+The project documentation can be accessed [here](https://gulnursl.github.io/dbt_payment/metadata). If it is not accessible for any reason, after running the `init.sh` script and while the container is still running, running `dbt docs generate` and `dbt docs serve` commands consecutively would also create a local instance of the documentation.
 
-Any assumption for building the data models or assumptions for the analyses can also be found in the model documentation.
+Any assumption for building the data models or assumptions for the analyses can also be found in the [documentation](https://gulnursl.github.io/dbt_payment/metadata).
 
 ## Where to find the analyses?
-The analyses are stored in the `./analyses` folder. The compiled queries for each analysis can be found in the corresponding documentation page. If the `init.sh` script is already run, the compiled queries can also be found in the `./target/compiled/dbt_payment/analyses` folder.
+The analyses are stored in the `./analyses` folder. The compiled queries for each analysis can be found in the corresponding [documentation](https://gulnursl.github.io/dbt_payment/metadata) page. If the `init.sh` script is already run, the compiled queries can also be found in the `./target/compiled/dbt_payment/analyses` folder.
 
 ## How to run the queries?
 Using any SQL client with PostgreSQL engine installed, after running the `init.sh` script and while the container is still running, the local database can be connected by the following credentials:
